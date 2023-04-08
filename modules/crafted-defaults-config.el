@@ -73,10 +73,10 @@ also enables undo functionality if the window layout changes."
 
 (keymap-set 'crafted-windows-key-map "u" 'winner-undo)
 (keymap-set 'crafted-windows-key-map "r" 'winner-redo)
-(keymap-set 'crafted-windows-key-map "n" 'windmove-down)
-(keymap-set 'crafted-windows-key-map "p" 'windmove-up)
-(keymap-set 'crafted-windows-key-map "b" 'windmove-left)
-(keymap-set 'crafted-windows-key-map "f" 'windmove-right)
+(keymap-set 'crafted-windows-key-map "j" 'windmove-down)
+(keymap-set 'crafted-windows-key-map "k" 'windmove-up)
+(keymap-set 'crafted-windows-key-map "h" 'windmove-left)
+(keymap-set 'crafted-windows-key-map "l" 'windmove-right)
 
 (keymap-global-set crafted-windows-prefix-key 'crafted-windows-key-map)
 
