@@ -88,11 +88,13 @@ also enables undo functionality if the window layout changes."
 (customize-set-variable 'completion-category-overrides
                         '((file (styles . (partial-completion)))))
 (customize-set-variable 'completions-detailed t)
-(if (version< emacs-version "28")
-    (icomplete-mode 1)
-  (fido-vertical-mode 1))               ; fido-vertical-mode is
-                                        ; available beginning in Emacs
-                                        ; 28
+
+;; Don't use this, use vertico instead.
+;; (if (version< emacs-version "28")
+;;     (icomplete-mode 1)
+;;   (fido-vertical-mode 1))               ; fido-vertical-mode is
+;;                                         ; available beginning in Emacs
+;;                                         ; 28
 
 (when (version< emacs-version "28")
   (defun crafted-mastering-emacs-use-icomplete-vertical ()
