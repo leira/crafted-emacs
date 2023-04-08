@@ -29,8 +29,7 @@ ARG is the thing being completed in the minibuffer."
 
 
 ;;; Vertico
-(when (featurep 'vertico)
-  (require 'vertico)
+(when (require 'vertico nil 'noerror)
   (require 'vertico-directory)
   ;; Cycle back to top/bottom result when the edge is reached
   (customize-set-variable 'vertico-cycle t)
@@ -49,16 +48,14 @@ ARG is the thing being completed in the minibuffer."
 
 ;;; Marginalia
 
-(when (featurep 'marginalia)
-  ;; Configure Marginalia
-  (require 'marginalia)
+(when (require 'marginalia nil 'noerror)
   (customize-set-variable 'marginalia-annotators
                           '(marginalia-annotators-heavy
                             marginalia-annotators-light
                             nil))
   (marginalia-mode 1))
 
-(when (featurep 'consult)
+(when (require 'consult nil 'noerror)
   ;; Set some consult bindings
   (keymap-global-set "C-s" 'consult-line)
   (keymap-set minibuffer-local-map "C-r" 'consult-history)
@@ -67,18 +64,15 @@ ARG is the thing being completed in the minibuffer."
 
 
 ;;; Orderless
-(when (featurep 'orderless)
+(when (require 'orderless nil 'noerror)
   ;; Set up Orderless for better fuzzy matching
-  (require 'orderless)
   (customize-set-variable 'completion-styles '(orderless basic))
   (customize-set-variable 'completion-category-overrides
                           '((file (styles . (partial-completion))))))
 
 
 ;;; Embark
-(when (featurep 'embark)
-  (require 'embark)
-
+(when (require 'embark nil 'noerror)
   (keymap-global-set "<remap> <describe-bindings>" #'embark-bindings)
   (keymap-global-set "C-." 'embark-act)
 
@@ -92,9 +86,7 @@ ARG is the thing being completed in the minibuffer."
 
 
 ;;; Corfu
-(when (featurep 'corfu)
-  (require 'corfu)
-
+(when (require 'corfu nil 'noerror)
   (unless (display-graphic-p)
     (when (featurep 'corfu-terminal)
       (require 'corfu-terminal)
@@ -108,9 +100,7 @@ ARG is the thing being completed in the minibuffer."
   (customize-set-variable 'corfu-echo-documentation 0.25) ; Echo docs for current completion option
 
   (global-corfu-mode 1)
-  (when (featurep 'corfu-popupinfo)
-    (require 'corfu-popupinfo)
-
+  (when (require 'corfu-popupinfo nil ':noerror)
     (corfu-popupinfo-mode 1)
     (eldoc-add-command #'corfu-insert)
     (keymap-set corfu-map "M-p" #'corfu-popupinfo-scroll-down)
@@ -119,11 +109,8 @@ ARG is the thing being completed in the minibuffer."
 
 
 ;;; Cape
-
-(when (featurep 'cape)
-  ;; Setup Cape for better completion-at-point support and more
-  (require 'cape)
-
+;; Setup Cape for better completion-at-point support and more
+(when (require 'cape nil 'noerror)
   ;; Add useful defaults completion sources from cape
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
