@@ -34,6 +34,8 @@ ARG is the thing being completed in the minibuffer."
   ;; Cycle back to top/bottom result when the edge is reached
   (customize-set-variable 'vertico-cycle t)
 
+  (setopt vertico-count 20)
+
   ;; Start Vertico
   (vertico-mode 1)
 
